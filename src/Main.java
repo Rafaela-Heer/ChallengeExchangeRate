@@ -18,6 +18,16 @@ public class Main {
         System.out.print("Moeda pra troca \n-> ");
         String outputCurrency = read.nextLine();
 
+        Currency result = RequestApi.getConversion(inputCurrency, outputCurrency, currency);
 
+        if ("success".equalsIgnoreCase(result.getResult())) {
+            System.out.println("Conversão realizada com sucesso!");
+            System.out.println("De: " + result.getBase_code());
+            System.out.println("Para: " + result.getTarget_code());
+            System.out.println("Taxa de câmbio: " + result.getConversion_rate());
+            System.out.println("Valor convertido: " + result.getConversion_result());
+        } else {
+            System.out.println("ERRO");
+        }
     }
 }
