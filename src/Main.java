@@ -24,21 +24,21 @@ public class Main {
 
             switch (menu){
                 case 1:
-                    System.out.print("\n Want to see the currency code list? (1) Yes (2) No\n-> ");
+                    System.out.print("\n Want to see the currency code list?\n (1) Yes\n (2) No\n-> ");
                     int codes = read.nextInt();
                     read.nextLine();
                     if (codes == 1) {
                         System.out.println(Currency.getRates() + "\n\n");
                     }
-                    System.out.print("\nFrom \n-> ");
+                    System.out.print("\nFrom: \n-> ");
                     String inputCurrency = read.nextLine();
 
 
-                    System.out.print("Amount \n-> ");
+                    System.out.print("Amount: \n-> ");
                     double currency = read.nextDouble();
                     read.nextLine();
 
-                    System.out.print("To \n-> ");
+                    System.out.print("To: \n-> ");
                     String outputCurrency = read.nextLine();
 
                     Currency result = RequestApi.getConversion(inputCurrency, outputCurrency, currency);
@@ -48,7 +48,7 @@ public class Main {
                         System.out.println("From: " + result.getBase_code());
                         System.out.println("To: " + result.getTarget_code());
                         System.out.println("Exchange rate(now): " + result.getConversion_rate());
-                        System.out.println("Conversion " + result.getConversion_result());
+                        System.out.println("Conversion: " + result.getConversion_result());
 
                         save.add(result.getBase_code() + " → " + result.getTarget_code()
                                 + " | Conversion: " + result.getConversion_result()
@@ -60,7 +60,7 @@ public class Main {
                     int backMenu = read.nextInt();
                     if (backMenu == 2) {
                         running = false;
-                        System.out.println("\n...\nClosing\n...");
+                        System.out.println("\n...\nCLOSING\n...");
                     }
                     break;
 
@@ -77,12 +77,12 @@ public class Main {
                     int backMenu2 = read.nextInt();
                     if (backMenu2 == 2) {
                         running = false;
-                        System.out.println("\n...\nClosing\n...");
+                        System.out.println("\n...\nCLOSING\n...");
                     }
                     break;
 
                 case 3:
-                    System.out.print("\n...\nClosing\n...");
+                    System.out.print("\n...\nCLOSING\n...");
                     running = false;
                     break;
 
