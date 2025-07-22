@@ -11,18 +11,26 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class RequestApi {
-    String endereco = "https://v6.exchangerate-api.com/v6/" + ExchangeRateApi.getMyapikey() + "/pair/" + inputCurrency + "/"+ outputCurrency +"/" + currency;
+    public static Currency getConversion(String inputCurrency, String outputCurrency, double currency) throws IOException, InterruptedException {
 
-    HttpClient client = HttpClient.newHttpClient();
-    HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create(endereco))
-            .build();
-    HttpResponse<String> response = client
-            .send(request, HttpResponse.BodyHandlers.ofString());
+        String endereco = "https://v6.exchangerate-api.com/v6/" + ExchangeRateApi.getMyapikey() + "/pair/" + inputCurrency + "/"+ outputCurrency +"/" + currency;
 
-    String json = response.body();
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endereco))
+                .build();
+        HttpResponse<String> response = client
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        String json = response.body();
         System.out.println(json);
-        
+
+
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+                .create();
+
+        return gson.fromJson(json, Currency.class);
     }
 
 
