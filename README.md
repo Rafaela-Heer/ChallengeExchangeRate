@@ -38,11 +38,20 @@ The system also keeps a history of conversions made during the session for user 
   private static String myapikey = "YOUR_API_KEY_HERE";
   
   ```
-3. Compile the project
+3. The **Gson library** `.jar` file manually added to your project
+#### 🔧 How to add Gson manually:
+ - Go to the [Gson page on Maven Repository](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+ - Download the latest stable version (`.jar`) that has **no known vulnerabilities**
+ - In your IDE (e.g., IntelliJ IDEA):
+   -   Go to `Project Structure > Modules > Dependencies`
+   -   Click the `+` icon and choose the `.jar` file you downloaded
+   -   Apply and save the changes
+
+4. Compile the project
    ```
    javac Main.java APIExchangeRate/*.java
    ```
-4. Run the application `Main.java`
+5. Run the application `Main.java`
 
 ## 📌 Example Interaction
 ```
